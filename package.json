@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "lint": "eslint lib test --fix",
-    "test": "mocha",
+    "tests": "mocha --recursive test/specs",
     "cover": "istanbul cover _mocha",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
@@ -40,6 +40,8 @@
     "mkdirp": "^0.5.1",
     "mocha": "^3.1.2",
     "npm-check": "^5.4.0",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.6",
     "through2": "^2.0.1",
     "version-bump-prompt": "^1.7.2"
   },
