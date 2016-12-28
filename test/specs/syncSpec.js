@@ -30,12 +30,12 @@ describe.only('The sync function', () => {
   //Ex. sync('my-app', '--foo', '--outFile=/foo bar/baz')
   describe('when the cli is called with seperate strings', () => {
     beforeEach(() => {
-      output = sync('ls', '--foo', 'bar');
+      output = sync('ls', '-al');
     });
 
     it('should parse and execute the cli properly', () => {
       sinon.assert.calledOnce(child_process.spawnSync);
-      sinon.assert.calledWith(child_process.spawnSync, 'ls', ['--foo', 'bar']);
+      sinon.assert.calledWith(child_process.spawnSync, 'ls', ['-al']);
     });
 
     it('should return an output object', () => {
@@ -47,10 +47,10 @@ describe.only('The sync function', () => {
   //Ex. sync('my-app', ['--foo', '--outFile', '/foo bar/baz'])
   describe('When the cli is called with an array of arguments', () => {
     it('should parse and execute the cli properly', () => {
-      sync('ls', ['--foo', 'bar']);
+      output = sync('ls', ['-al']);
 
       sinon.assert.calledOnce(child_process.spawnSync);
-      sinon.assert.calledWith(child_process.spawnSync, 'ls', ['--foo', 'bar']);
+      sinon.assert.calledWith(child_process.spawnSync, 'ls', ['-al']);
     });
 
     it('should return an output object', () => {
@@ -62,12 +62,12 @@ describe.only('The sync function', () => {
   //Ex. sync('my-app --foo --outFile="/foo bar/baz"')
   describe('When the cli is called as one string', () => {
     beforeEach(() => {
-      output = sync('ls --foo --outFile="/foo bar/baz"');
+      output = sync('ls -al');
     });
 
     it('should parse and execute the cli properly', () => {
       sinon.assert.calledOnce(child_process.spawnSync);
-      sinon.assert.calledWith(child_process.spawnSync, 'ls --foo --outFile="/foo bar/baz"');
+      sinon.assert.calledWith(child_process.spawnSync, 'ls', ['-al']);
     });
 
     it('should return an output object', () => {
