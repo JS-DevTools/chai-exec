@@ -60,6 +60,7 @@ describe('The async function', () => {
     describe('with a callback passed in', () => {
       beforeEach(() => {
         async('my-cli', cbSpy);
+        rootEventMocks['exit'](1, null);
       });
 
       it('should only call the spawn method with the cli command', () => {
@@ -67,11 +68,18 @@ describe('The async function', () => {
         sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', []);
       });
 
-      it('should call the cb once the spawn process is complete', () => {
-        rootEventMocks['exit'](1, null);
+      it('should call the cb once the spawn process is complete', (done) => {
 
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
+          expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            pid: '1234',
+            output: [],
+            status: 1,
+            signal: null
+          });
+
+          done();
         }, 100);
       });
     });
@@ -112,15 +120,24 @@ describe('The async function', () => {
     describe('When a callback is passed in', () => {
       beforeEach(() => {
         async('my-cli', '--foo', '--outFile=/foo bar/baz', cbSpy);
+        rootEventMocks['exit'](1, null);
+
       });
 
       it('should parse and execute the cli properly', () => {
         sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile=/foo bar/baz']);
       });
 
-      it('should execute the callback function when done', () => {
+      it('should execute the callback function when done', (done) => {
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
+          expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            pid: '1234',
+            output: [],
+            status: 1,
+            signal: null
+          });
+          done();
         }, 100);
       });
     });
@@ -158,15 +175,24 @@ describe('The async function', () => {
     describe('When a callback is passed in', () => {
       beforeEach(() => {
         async('my-cli', ['--foo', '--outFile', '/foo bar/baz'], cbSpy);
+        rootEventMocks['exit'](1, null);
+
       });
 
       it('should parse and execute the cli properly', () => {
         sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile', '/foo bar/baz']);
       });
 
-      it('should execute the callback function when done', () => {
+      it('should execute the callback function when done', (done) => {
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
+          expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            pid: '1234',
+            output: [],
+            status: 1,
+            signal: null
+          });
+          done();
         }, 100);
       });
     });
