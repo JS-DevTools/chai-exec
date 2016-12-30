@@ -51,7 +51,8 @@
   },
   "dependencies": {
     "call-me-maybe": "^1.0.1",
-    "string-argv": "0.0.2"
+    "string-argv": "0.0.2",
+    "type-detect": "^4.0.0"
   },
   "engines": {
     "node": ">=4"
