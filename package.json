@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "lint": "eslint lib test --fix",
-    "tests": "mocha --recursive test/specs",
+    "tests": "mocha",
     "cover": "istanbul cover _mocha",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
