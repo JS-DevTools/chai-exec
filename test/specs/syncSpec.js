@@ -1,3 +1,5 @@
+'use strict';
+
 const expect = require('chai').expect;
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
@@ -11,10 +13,10 @@ describe('The sync function', () => {
 
     childProcessMock = {
       spawnSync: sinon.spy()
-    }
+    };
 
     sync = proxyquire('../../lib/sync.js', {
-      'child_process': childProcessMock
+      child_process: childProcessMock     // eslint-disable-line camelcase
     });
 
   });
@@ -31,7 +33,7 @@ describe('The sync function', () => {
     });
   });
 
-  //Ex. sync('my-cli', '--foo', '--outFile=/foo bar/baz')
+  // Ex. sync('my-cli', '--foo', '--outFile=/foo bar/baz')
   describe('when the cli is called with seperate strings', () => {
     beforeEach(() => {
       sync('my-cli', '--foo', '--outFile=/foo bar/baz');
@@ -44,7 +46,7 @@ describe('The sync function', () => {
 
   });
 
-  //Ex. sync('my-cli', ['--foo', '--outFile', '/foo bar/baz'])
+  // Ex. sync('my-cli', ['--foo', '--outFile', '/foo bar/baz'])
   describe('When the cli is called with an array of arguments', () => {
     it('should parse and execute the cli properly', () => {
       sync('my-cli', ['--foo', '--outFile', '/foo bar/baz']);
@@ -54,7 +56,7 @@ describe('The sync function', () => {
     });
   });
 
-  //Ex. sync('my-cli --foo --outFile="/foo bar/baz"')
+  // Ex. sync('my-cli --foo --outFile="/foo bar/baz"')
   describe('When the cli is called as one string', () => {
     beforeEach(() => {
       sync('my-cli --foo --outFile="/foo bar/baz"');

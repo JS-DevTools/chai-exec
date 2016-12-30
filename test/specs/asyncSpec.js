@@ -1,4 +1,6 @@
-//TODO: Add more unit test cases for cb error handling as wells as promise rejections.
+'use strict';
+
+// TODO: Add more unit test cases for cb error handling as wells as promise rejections.
 
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -39,14 +41,14 @@ describe('The async function', () => {
               stdErrEventMocks[event] = eventCB;
             }
           }
-        }
+        };
       }
-    }
+    };
 
     sinon.spy(childProcessMock, 'spawn');
 
     async = proxyquire('../../lib/async.js', {
-      'child_process': childProcessMock
+      child_process: childProcessMock     // eslint-disable-line camelcase
     });
 
   });
@@ -60,7 +62,7 @@ describe('The async function', () => {
     describe('with a callback passed in', () => {
       beforeEach(() => {
         async('my-cli', cbSpy);
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
       });
 
       it('should only call the spawn method with the cli command', () => {
@@ -89,7 +91,7 @@ describe('The async function', () => {
 
       beforeEach(() => {
         promise = async('my-cli');
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
       });
 
       it('should only call the spawn method with the cli command', () => {
@@ -110,17 +112,17 @@ describe('The async function', () => {
         ]);
 
       });
-    })
+    });
 
   });
 
-  //Ex. sync('my-cli', '--foo', '--outFile=/foo bar/baz')
+  // Ex. sync('my-cli', '--foo', '--outFile=/foo bar/baz')
   describe('when the cli is called with seperate strings', () => {
 
     describe('When a callback is passed in', () => {
       beforeEach(() => {
         async('my-cli', '--foo', '--outFile=/foo bar/baz', cbSpy);
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
 
       });
 
@@ -146,7 +148,7 @@ describe('The async function', () => {
       let promise = null;
       beforeEach(() => {
         promise = async('my-cli', '--foo', '--outFile=/foo bar/baz');
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
       });
 
       it('should parse and execute the cli properly', () => {
@@ -170,12 +172,12 @@ describe('The async function', () => {
 
   });
 
-  //Ex. sync('my-cli', ['--foo', '--outFile', '/foo bar/baz'])
+  // Ex. sync('my-cli', ['--foo', '--outFile', '/foo bar/baz'])
   describe('When the cli is called with an array of arguments', () => {
     describe('When a callback is passed in', () => {
       beforeEach(() => {
         async('my-cli', ['--foo', '--outFile', '/foo bar/baz'], cbSpy);
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
 
       });
 
@@ -201,7 +203,7 @@ describe('The async function', () => {
       let promise = null;
       beforeEach(() => {
         promise = async('my-cli', ['--foo', '--outFile', '/foo bar/baz']);
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
       });
 
       it('should parse and execute the cli properly', () => {
@@ -224,7 +226,7 @@ describe('The async function', () => {
     });
   });
 
-  //Ex. sync('my-cli --foo --outFile="/foo bar/baz"')
+  // Ex. sync('my-cli --foo --outFile="/foo bar/baz"')
   describe('When the cli is called as one string', () => {
     describe('When a callback is passed in', () => {
       beforeEach(() => {
@@ -246,7 +248,7 @@ describe('The async function', () => {
       let promise = null;
       beforeEach(() => {
         promise = async('my-cli --foo --outFile="/foo bar/baz"');
-        rootEventMocks['exit'](1, null);
+        rootEventMocks.exit(1, null);
       });
 
       it('should parse and execute the cli properly', () => {
@@ -268,4 +270,4 @@ describe('The async function', () => {
       });
     });
   });
-})
+});
