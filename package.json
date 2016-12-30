@@ -4,8 +4,8 @@
   "description": "Chai plugin for testing CLIs",
   "keywords": [
     "chai",
-    "cli",
-    ""
+    "chai-plugin",
+    "cli"
   ],
   "author": {
     "name": "Randall Krauskopf",
