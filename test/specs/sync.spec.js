@@ -7,12 +7,12 @@ const sinon = require('sinon');
 let childProcessMock = null;
 let sync = null;
 
-describe.only('The sync function', () => {
+describe('The sync function', () => {
 
   beforeEach(() => {
 
     childProcessMock = {
-      spawnSync: sinon.spy()
+      spawnSync: sinon.stub().returns({})
     };
 
     sync = proxyquire('../../lib/sync.js', {
@@ -22,14 +22,16 @@ describe.only('The sync function', () => {
   });
 
   it('should throw an error if no cli command is specified', () => {
-    expect(sync.bind(null)).to.throw('Must specify command line program');
+    expect(sync.bind(null)).to.throw(
+      'chai-exec was called with invalid arguments. The command to execute is missing.'
+    );
   });
 
   describe('when only the cli command is specified', () => {
     it('should only call spawnSync with the cli command', () => {
       sync('my-cli');
       sinon.assert.calledOnce(childProcessMock.spawnSync);
-      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', []);
+      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', [], {});
     });
   });
 
@@ -41,7 +43,7 @@ describe.only('The sync function', () => {
 
     it('should parse and execute the cli properly', () => {
       sinon.assert.calledOnce(childProcessMock.spawnSync);
-      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile=/foo bar/baz']);
+      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile=/foo bar/baz'], {});
     });
 
   });
@@ -52,7 +54,7 @@ describe.only('The sync function', () => {
       sync('my-cli', ['--foo', '--outFile', '/foo bar/baz']);
 
       sinon.assert.calledOnce(childProcessMock.spawnSync);
-      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile', '/foo bar/baz']);
+      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile', '/foo bar/baz'], {});
     });
   });
 
@@ -64,7 +66,7 @@ describe.only('The sync function', () => {
 
     it('should parse and execute the cli properly', () => {
       sinon.assert.calledOnce(childProcessMock.spawnSync);
-      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile="/foo bar/baz"']);
+      sinon.assert.calledWithExactly(childProcessMock.spawnSync, 'my-cli', ['--foo', '--outFile="/foo bar/baz"'], {});
     });
   });
 

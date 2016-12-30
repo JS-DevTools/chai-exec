@@ -54,7 +54,9 @@ describe('The async function', () => {
   });
 
   it('should throw an error if no cli command is specified', () => {
-    expect(async.bind(null)).to.throw('Must specify command line program');
+    expect(async.bind(null)).to.throw(
+      'chai-exec was called with invalid arguments. The command to execute is missing.'
+    );
   });
 
   describe('when only the cli command is specified', () => {
@@ -67,7 +69,7 @@ describe('The async function', () => {
 
       it('should only call the spawn method with the cli command', () => {
         sinon.assert.calledOnce(childProcessMock.spawn);
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', []);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', [], {});
       });
 
       it('should call the cb once the spawn process is complete', (done) => {
@@ -75,10 +77,14 @@ describe('The async function', () => {
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
           expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            argv: ['my-cli'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           });
 
           done();
@@ -96,7 +102,7 @@ describe('The async function', () => {
 
       it('should only call the spawn method with the cli command', () => {
         sinon.assert.calledOnce(childProcessMock.spawn);
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', []);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', [], {});
       });
 
       it('should return a promise that gets resolved with the process object', () => {
@@ -104,10 +110,14 @@ describe('The async function', () => {
         return Promise.all([
           promise.should.eventually.be.fulfilled,
           promise.should.eventually.deep.equal({
+            argv: ['my-cli'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           })
         ]);
 
@@ -127,17 +137,21 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile=/foo bar/baz']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile=/foo bar/baz'], {});
       });
 
       it('should execute the callback function when done', (done) => {
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
           expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            argv: ['my-cli', '--foo', '--outFile=/foo bar/baz'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           });
           done();
         }, 100);
@@ -152,7 +166,7 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile=/foo bar/baz']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile=/foo bar/baz'], {});
       });
 
       it('should return a promise that gets resolved with the process object', () => {
@@ -160,10 +174,14 @@ describe('The async function', () => {
         return Promise.all([
           promise.should.eventually.be.fulfilled,
           promise.should.eventually.deep.equal({
+            argv: ['my-cli', '--foo', '--outFile=/foo bar/baz'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           })
         ]);
 
@@ -182,17 +200,21 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile', '/foo bar/baz']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile', '/foo bar/baz'], {});
       });
 
       it('should execute the callback function when done', (done) => {
         setTimeout(() => {
           sinon.assert.calledOnce(cbSpy);
           expect(cbSpy.getCall(0).args[1]).to.deep.equal({
+            argv: ['my-cli', '--foo', '--outFile', '/foo bar/baz'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           });
           done();
         }, 100);
@@ -207,7 +229,7 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile', '/foo bar/baz']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile', '/foo bar/baz'], {});
       });
 
       it('should return a promise that gets resolved with the process object', () => {
@@ -215,10 +237,14 @@ describe('The async function', () => {
         return Promise.all([
           promise.should.eventually.be.fulfilled,
           promise.should.eventually.deep.equal({
+            argv: ['my-cli', '--foo', '--outFile', '/foo bar/baz'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           })
         ]);
 
@@ -234,7 +260,7 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile="/foo bar/baz"']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile="/foo bar/baz"'], {});
       });
 
       it('should execute the callback function when done', () => {
@@ -252,7 +278,7 @@ describe('The async function', () => {
       });
 
       it('should parse and execute the cli properly', () => {
-        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile="/foo bar/baz"']);
+        sinon.assert.calledWithExactly(childProcessMock.spawn, 'my-cli', ['--foo', '--outFile="/foo bar/baz"'], {});
       });
 
       it('should return a promise that gets resolved with the process object', () => {
@@ -260,10 +286,14 @@ describe('The async function', () => {
         return Promise.all([
           promise.should.eventually.be.fulfilled,
           promise.should.eventually.deep.equal({
+            argv: ['my-cli', '--foo', '--outFile="/foo bar/baz"'],
             pid: '1234',
-            output: [],
-            status: 1,
-            signal: null
+            output: undefined,
+            stdout: undefined,
+            stderr: undefined,
+            error: undefined,
+            exitCode: 1,
+            signal: null,
           })
         ]);
 
