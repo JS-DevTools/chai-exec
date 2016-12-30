@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "lint": "eslint lib test --fix",
-    "tests": "mocha",
+    "test": "mocha",
     "cover": "istanbul cover _mocha",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
