@@ -7,7 +7,7 @@ const sinon = require('sinon');
 let childProcessMock = null;
 let sync = null;
 
-describe('The sync function', () => {
+describe.only('The sync function', () => {
 
   beforeEach(() => {
 
