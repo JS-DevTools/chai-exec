@@ -5,7 +5,9 @@
   "keywords": [
     "chai",
     "chai-plugin",
-    "cli"
+    "cli",
+    "spawn",
+    "exec"
   ],
   "author": {
     "name": "Randall Krauskopf",
