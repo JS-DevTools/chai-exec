@@ -11,6 +11,10 @@
     "name": "Randall Krauskopf",
     "url": "http://github.com/rkrauskopf"
   },
+  "contributors": [
+    "Randall Krauskopf (http://github.com/rkrauskopf)",
+    "James Messinger (http://jamesmessinger.com)"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/rkrauskopf/chai-exec",
   "main": "lib/index.js",
