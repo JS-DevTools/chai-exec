@@ -1,0 +1,2 @@
+# chai-exec
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7bedf5a9d8064aba83d883910feea4fe)](https://www.codacy.com/app/randall-krauskopf/chai-exec?utm_source=github.com&utm_medium=referral&utm_content=rkrauskopf/chai-exec&utm_campaign=badger)
