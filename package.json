@@ -1,7 +1,7 @@
 {
   "name": "chai-exec",
   "version": "0.0.1",
-  "description": "Chai plugin for testing CLIs",
+  "description": "Chai assertions for testing your CLI",
   "keywords": [
     "chai",
     "chai-plugin",
@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
     "codacy-coverage": "^2.0.0",
     "coveralls": "^2.11.14",
     "eslint": "^3.9.0",
@@ -45,14 +44,10 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "npm-check": "^5.4.0",
-    "proxyquire": "^1.7.10",
-    "sinon": "^1.17.6",
     "version-bump-prompt": "^1.7.2"
   },
   "dependencies": {
-    "call-me-maybe": "^1.0.1",
-    "string-argv": "0.0.2",
-    "type-detect": "^4.0.0"
+    "ez-spawn": "0.0.2"
   },
   "engines": {
     "node": ">=4"
