@@ -19,6 +19,10 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/rkrauskopf/chai-exec",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkrauskopf/chai-exec.git"
+  },
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -30,10 +34,6 @@
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm test && npm run bump && npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rkrauskopf/chai-exec.git"
   },
   "devDependencies": {
     "chai": "^3.5.0",
