@@ -74,19 +74,13 @@ describe('exit-code', () => {
 
     it('should test exit code equality', () => {
       // Expect syntax
-      try {
+      (() => {
         expect(exitWithZero).to.exit.with.code(999);
-      }
-      catch (error) {
-        expect(error.message).to.equal('expected exit code to equal 999, not zero');
-      }
+      }).should.throw('expected exit code to equal 999, not zero');
 
-      try {
+      (() => {
         expect(exitWithOne).to.have.exitCode(999, 'my custom message');
-      }
-      catch (error) {
-        expect(error.message).to.equal('my custom message');
-      }
+      }).should.throw('my custom message');
 
       // Should syntax
       exitWithZero.should.have.exitCode(0);
