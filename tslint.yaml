@@ -1,0 +1,458 @@
+# TSLint configuration
+# https://palantir.github.io/tslint/usage/configuration/
+# https://palantir.github.io/tslint/rules/
+
+rules:
+  # https://palantir.github.io/tslint/rules/adjacent-overload-signatures/
+  adjacent-overload-signatures true
+
+  # https://palantir.github.io/tslint/rules/align/
+  align
+  - true
+  - parameters
+  - arguments
+  - statements
+  - elements
+  - members
+
+  # https://palantir.github.io/tslint/rules/array-type/
+  array-type
+  - true
+  - array-simple
+
+  # https://palantir.github.io/tslint/rules/arrow-parens/
+  arrow-parens true
+
+  # https://palantir.github.io/tslint/rules/arrow-return-shorthand/
+  arrow-return-shorthand
+  - true
+  - multiline
+
+  # https://palantir.github.io/tslint/rules/await-promise/
+  await-promise true
+
+  # https://palantir.github.io/tslint/rules/ban-comma-operator/
+  ban-comma-operator true
+
+  # https://palantir.github.io/tslint/rules/ban-ts-ignore/
+  ban-ts-ignore true
+
+  # https://palantir.github.io/tslint/rules/ban-types/
+  ban-types
+    - true
+    - - Object
+    - - Function
+    - - Boolean
+    - - Number
+    - - String
+    - - Symbol
+
+  # https://palantir.github.io/tslint/rules/binary-expression-operand-order/
+  binary-expression-operand-order true
+
+  # https://palantir.github.io/tslint/rules/callable-types/
+  callable-types true
+
+  # https://palantir.github.io/tslint/rules/class-name/
+  class-name true
+
+  # https://palantir.github.io/tslint/rules/comment-type/
+  comment-type
+  - true
+  - singleline
+  - multiline
+  - doc
+  - directive
+
+  # https://palantir.github.io/tslint/rules/curly/
+  curly true
+
+  # https://palantir.github.io/tslint/rules/deprecation/
+  deprecation true
+
+  # https://palantir.github.io/tslint/rules/encoding/
+  encoding true
+
+  # https://palantir.github.io/tslint/rules/eofline/
+  eofline true
+
+  # https://palantir.github.io/tslint/rules/file-name-casing/
+  file-name-casing
+  - true
+  - kebab-case
+
+  # https://palantir.github.io/tslint/rules/forin/
+  forin true
+
+  # https://palantir.github.io/tslint/rules/function-constructor/
+  function-constructor true
+
+  # https://palantir.github.io/tslint/rules/import-spacing/
+  import-spacing true
+
+  # https://palantir.github.io/tslint/rules/increment-decrement/
+  increment-decrement true
+
+  # https://palantir.github.io/tslint/rules/indent/
+  indent
+  - true
+  - spaces
+
+  # https://palantir.github.io/tslint/rules/interface-name/
+  interface-name
+  - true
+  - never-prefix
+
+  # https://palantir.github.io/tslint/rules/jsdoc-format/
+  jsdoc-format
+  - true
+  - check-multiline-start
+
+  # https://palantir.github.io/tslint/rules/label-position/
+  label-position true
+
+  # https://palantir.github.io/tslint/rules/linebreak-style/
+  linebreak-style
+  - true
+  - LF
+
+  # https://palantir.github.io/tslint/rules/match-default-export-name/
+  match-default-export-name true
+
+  # https://palantir.github.io/tslint/rules/max-file-line-count/
+  max-file-line-count
+  - true
+  - 1000
+
+  # https://palantir.github.io/tslint/rules/member-access/
+  member-access
+  - true
+  - check-accessor
+  - check-constructor
+  - check-parameter-property
+
+  # https://palantir.github.io/tslint/rules/new-parens/
+  new-parens true
+
+  # https://palantir.github.io/tslint/rules/no-angle-bracket-type-assertion/
+  no-angle-bracket-type-assertion true
+
+  # https://palantir.github.io/tslint/rules/no-any/
+  no-any
+    severity: warning
+
+  # https://palantir.github.io/tslint/rules/no-arg/
+  no-arg true
+
+  # https://palantir.github.io/tslint/rules/no-bitwise/
+  no-bitwise true
+
+  # https://palantir.github.io/tslint/rules/no-boolean-literal-compare/
+  no-boolean-literal-compare true
+
+  # https://palantir.github.io/tslint/rules/no-conditional-assignment/
+  no-conditional-assignment true
+
+  # https://palantir.github.io/tslint/rules/no-consecutive-blank-lines/
+  no-consecutive-blank-lines
+  - true
+  - 2
+
+  # https://palantir.github.io/tslint/rules/no-construct/
+  no-construct true
+
+  # https://palantir.github.io/tslint/rules/no-debugger/
+  no-debugger true
+
+  # https://palantir.github.io/tslint/rules/no-default-export/
+  no-default-export true
+
+  # https://palantir.github.io/tslint/rules/no-default-import/
+  no-default-import true
+
+  # https://palantir.github.io/tslint/rules/no-duplicate-imports/
+  no-duplicate-imports true
+
+  # https://palantir.github.io/tslint/rules/no-duplicate-super/
+  no-duplicate-super true
+
+  # https://palantir.github.io/tslint/rules/no-duplicate-switch-case/
+  no-duplicate-switch-case true
+
+  # https://palantir.github.io/tslint/rules/no-duplicate-variable/
+  no-duplicate-variable
+  - true
+  - check-parameters
+
+  # https://palantir.github.io/tslint/rules/no-dynamic-delete/
+  no-dynamic-delete true
+
+  # https://palantir.github.io/tslint/rules/no-empty/
+  no-empty
+    severity: warning
+
+  # https://palantir.github.io/tslint/rules/no-empty-interface/
+  no-empty-interface true
+
+  # https://palantir.github.io/tslint/rules/no-eval/
+  no-eval true
+
+  # https://palantir.github.io/tslint/rules/no-floating-promises/
+  no-floating-promises true
+
+  # https://palantir.github.io/tslint/rules/no-for-in-array/
+  no-for-in-array true
+
+  # https://palantir.github.io/tslint/rules/no-implicit-dependencies/
+  no-implicit-dependencies true
+
+  # https://palantir.github.io/tslint/rules/no-import-side-effect/
+  no-import-side-effect
+  - true
+  - ignore-module: source-map-support/register
+
+  # https://palantir.github.io/tslint/rules/no-inferred-empty-object-type/
+  no-inferred-empty-object-type true
+
+  # https://palantir.github.io/tslint/rules/no-internal-module/
+  no-internal-module true
+
+  # https://palantir.github.io/tslint/rules/no-invalid-template-strings/
+  no-invalid-template-strings true
+
+  # https://palantir.github.io/tslint/rules/no-irregular-whitespace/
+  no-irregular-whitespace true
+
+  # https://palantir.github.io/tslint/rules/no-mergeable-namespace/
+  no-mergeable-namespace true
+
+  # https://palantir.github.io/tslint/rules/no-misused-new/
+  no-misused-new true
+
+  # https://palantir.github.io/tslint/rules/no-namespace/
+  no-namespace true
+
+  # https://palantir.github.io/tslint/rules/no-null-keyword/
+  no-null-keyword true
+
+  # https://palantir.github.io/tslint/rules/no-parameter-properties/
+  no-parameter-properties true
+
+  # https://palantir.github.io/tslint/rules/no-redundant-jsdoc/
+  no-redundant-jsdoc true
+
+  # https://palantir.github.io/tslint/rules/no-reference/
+  no-reference true
+
+  # https://palantir.github.io/tslint/rules/no-reference-import/
+  no-reference-import true
+
+  # https://palantir.github.io/tslint/rules/no-return-await/
+  no-return-await true
+
+  # https://palantir.github.io/tslint/rules/no-shadowed-variable/
+  no-shadowed-variable
+    severity: warning
+
+  # https://palantir.github.io/tslint/rules/no-sparse-arrays/
+  no-sparse-arrays true
+
+  # https://palantir.github.io/tslint/rules/no-string-literal/
+  no-string-literal true
+
+  # https://palantir.github.io/tslint/rules/no-string-throw/
+  no-string-throw true
+
+  # https://palantir.github.io/tslint/rules/no-submodule-imports/
+  no-submodule-imports
+  - true
+  - source-map-support/register
+
+  # https://palantir.github.io/tslint/rules/no-this-assignment/
+  no-this-assignment true
+
+  # https://palantir.github.io/tslint/rules/no-trailing-whitespace/
+  no-trailing-whitespace true
+
+  # https://palantir.github.io/tslint/rules/no-unbound-method/
+  no-unbound-method
+  - true
+  - ignore-static
+
+  # https://palantir.github.io/tslint/rules/no-unnecessary-class/
+  no-unnecessary-class
+  - true
+  - allow-empty-class
+
+  # https://palantir.github.io/tslint/rules/no-unnecessary-initializer/
+  no-unnecessary-initializer true
+
+  # https://palantir.github.io/tslint/rules/no-unnecessary-qualifier/
+  no-unnecessary-qualifier true
+
+  # https://palantir.github.io/tslint/rules/no-unnecessary-type-assertion/
+  no-unnecessary-type-assertion true
+
+  # https://palantir.github.io/tslint/rules/no-unsafe-any/
+  no-unsafe-any true
+
+  # https://palantir.github.io/tslint/rules/no-unsafe-finally/
+  no-unsafe-finally true
+
+  # https://palantir.github.io/tslint/rules/no-unused-expression/
+  no-unused-expression
+  - true
+  - allow-fast-null-checks
+
+  # https://palantir.github.io/tslint/rules/no-use-before-declare/
+  no-use-before-declare true
+
+  # https://palantir.github.io/tslint/rules/no-var-keyword/
+  no-var-keyword true
+
+  # https://palantir.github.io/tslint/rules/no-var-requires/
+  no-var-requires true
+
+  # https://palantir.github.io/tslint/rules/no-void-expression/
+  no-void-expression
+  - true
+  - ignore-arrow-function-shorthand
+
+  # https://palantir.github.io/tslint/rules/number-literal-format/
+  number-literal-format true
+
+  # https://palantir.github.io/tslint/rules/object-literal-key-quotes/
+  object-literal-key-quotes
+  - true
+  - consistent-as-needed
+
+  # https://palantir.github.io/tslint/rules/object-literal-shorthand/
+  object-literal-shorthand true
+
+  # https://palantir.github.io/tslint/rules/one-line/
+  one-line
+  - true
+  - check-open-brace
+  - check-whitespace
+
+  # https://palantir.github.io/tslint/rules/only-arrow-functions/
+  only-arrow-functions
+  - true
+  - allow-declarations
+  - allow-named-functions
+
+  # https://palantir.github.io/tslint/rules/ordered-imports/
+  ordered-imports
+  - true
+  - import-sources-order: case-insensitive
+    named-imports-order: case-insensitive
+    module-source-path: full
+
+  # https://palantir.github.io/tslint/rules/prefer-for-of/
+  prefer-for-of true
+
+  # https://palantir.github.io/tslint/rules/prefer-method-signature/
+  prefer-method-signature true
+
+  # https://palantir.github.io/tslint/rules/prefer-object-spread/
+  prefer-object-spread true
+
+  # https://palantir.github.io/tslint/rules/prefer-readonly/
+  prefer-readonly true
+
+  # https://palantir.github.io/tslint/rules/prefer-switch/
+  prefer-switch true
+
+  # https://palantir.github.io/tslint/rules/prefer-while/
+  prefer-while true
+
+  # https://palantir.github.io/tslint/rules/promise-function-async/
+  promise-function-async
+  - true
+  - check-function-declaration
+  - check-method-declaration
+
+  # https://palantir.github.io/tslint/rules/quotemark/
+  quotemark
+  - true
+  - double
+  - avoid-escape
+  - jsx-double
+
+  # https://palantir.github.io/tslint/rules/radix/
+  radix true
+
+  # https://palantir.github.io/tslint/rules/restrict-plus-operands/
+  restrict-plus-operands true
+
+  # https://palantir.github.io/tslint/rules/return-undefined/
+  return-undefined true
+
+  # https://palantir.github.io/tslint/rules/semicolon/
+  semicolon
+  - true
+  - always
+
+  # https://palantir.github.io/tslint/rules/space-before-function-paren/
+  space-before-function-paren
+  - true
+  - anonymous: never
+    asyncArrow: always
+    constructor: never
+    method: never
+    named: never
+
+  # https://palantir.github.io/tslint/rules/space-within-parens/
+  space-within-parens
+  - true
+  - 0
+
+  # https://palantir.github.io/tslint/rules/triple-equals/
+  triple-equals true
+
+  # https://palantir.github.io/tslint/rules/type-literal-delimiter/
+  type-literal-delimiter true
+
+  # https://palantir.github.io/tslint/rules/typedef-whitespace/
+  typedef-whitespace
+  - true
+  - call-signature: nospace
+    index-signature: nospace
+    parameter: nospace
+    property-declaration: nospace
+    variable-declaration: nospace
+  - call-signature: onespace
+    index-signature: onespace
+    parameter: onespace
+    property-declaration: onespace
+    variable-declaration: onespace
+
+  # https://palantir.github.io/tslint/rules/unified-signatures/
+  unified-signatures
+    severity: warning
+
+  # https://palantir.github.io/tslint/rules/unnecessary-bind/
+  unnecessary-bind true
+
+  # https://palantir.github.io/tslint/rules/unnecessary-constructor/
+  unnecessary-constructor true
+
+  # https://palantir.github.io/tslint/rules/use-default-type-parameter/
+  use-default-type-parameter true
+
+  # https://palantir.github.io/tslint/rules/use-isnan/
+  use-isnan true
+
+  # https://palantir.github.io/tslint/rules/whitespace/
+  whitespace
+  - true
+  - check-branch
+  - check-decl
+  - check-operator
+  - check-module
+  - check-separator
+  - check-type
+  - check-typecast
+  - check-preblock
+  - check-type-operator
+  - check-rest-spread

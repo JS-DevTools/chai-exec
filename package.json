@@ -24,11 +24,14 @@
     "url": "https://github.com/JS-DevTools/chai-exec.git"
   },
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
-    "lint": "eslint lib test",
+    "lint": "tslint -p tsconfig.json && eslint test",
+    "build": "tsc",
+    "watch": "tsc --watch",
     "test": "mocha && npm run lint",
     "coverage": "nyc --reporter=text --reporter=lcov mocha",
     "upgrade": "npm-check -u",
@@ -36,6 +39,7 @@
     "release": "npm run upgrade && npm test && npm run bump"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
     "@types/node": "^10.12.15",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
@@ -44,7 +48,9 @@
     "mocha": "^5.2.0",
     "npm-check": "^5.9.0",
     "nyc": "^13.1.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.2.2",
+    "typescript-tslint-plugin": "^0.2.1",
     "version-bump-prompt": "^4.2.2"
   },
   "dependencies": {
