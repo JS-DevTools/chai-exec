@@ -35,6 +35,9 @@ pids
 # Dependencies
 node_modules
 
+# Build output
+/lib
+
 # Test output
-lib-cov
+/.nyc_output
 /coverage

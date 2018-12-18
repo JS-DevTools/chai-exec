@@ -28,21 +28,21 @@ chai.use(chaiExec);
 
 describe("My CLI", () => {
   it("should exit with a zero exit code", () => {
-    // Run your CLI synchronously (use chaiExec.async to run asynchronously)
-    let process = chaiExec.sync('my-cli --arg1 --arg2 "some other arg"');
+    // Run your CLI
+    let myCLI = chaiExec('my-cli --arg1 --arg2 "some other arg"');
 
     // Should syntax
-    process.should.exit.with(0);
-    process.should.exit.with.code.above(0, "the exit code is invalid");
-    process.should.have.exitCode(0, "you coded it wrong");
+    myCLI.should.exit.with(0);
+    myCLI.should.exit.with.code.above(0, "the exit code is invalid");
+    myCLI.should.have.exitCode(0, "you coded it wrong");
 
     // Expect sytnax
-    expect(process).to.exit.with(0);
-    expect(process).to.exit.with.code(0);
-    expect(process).to.have.exitCode(0);
+    expect(myCLI).to.exit.with(0);
+    expect(myCLI).to.exit.with.code(0);
+    expect(myCLI).to.have.exitCode(0);
 
     // Assert syntax
-    assert.exitCode(process, 0);
+    assert.exitCode(myCLI, 0);
   });
 });
 ```

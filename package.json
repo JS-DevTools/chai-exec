@@ -29,7 +29,9 @@
     "lib"
   ],
   "scripts": {
-    "lint": "tslint -p tsconfig.json && eslint test",
+    "lint": "npm run lint:typescript && npm run lint:javascript",
+    "lint:typescript": "tslint -p tsconfig.json",
+    "lint:javascript": "eslint test",
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "mocha && npm run lint",
@@ -48,7 +50,7 @@
     "mocha": "^5.2.0",
     "npm-check": "^5.9.0",
     "nyc": "^13.1.0",
-    "tslint": "^5.11.0",
+    "tslint": "^5.12.0",
     "typescript": "^3.2.2",
     "typescript-tslint-plugin": "^0.2.1",
     "version-bump-prompt": "^4.2.2"

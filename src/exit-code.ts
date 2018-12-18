@@ -1,38 +1,31 @@
-"use strict";
-
-const Process = require("ez-spawn").Process;
-
-module.exports = exitCodeAssertions;
+import { Process } from "ez-spawn";
+import { Chai, ChaiUtil } from "./chai";
 
 /**
  * Assertions for the program's exit code
- *
- * @param {object} chai - The ChaiJS module
- * @param {object} utils - ChaiJS utility functions
  */
-function exitCodeAssertions (chai, utils) {
+export function exitCodeAssertions(chai: Chai, util: ChaiUtil) {
   const Assertion = chai.Assertion;
-  const flag = utils.flag;
 
   /**
    * @example
    * assert.exitCode(chaiExec.sync('cmd'), 0);
    */
-  chai.assert.exitCode = (process, expected, msg) =>
+  chai.assert.exitCode = (process: Process, expected, msg: string) =>
     new Assertion(process).to.have.exitCode(expected, msg);
 
   /**
    * @example
    * assert.notExitCode(chaiExec.sync('cmd'), 1);
    */
-  chai.assert.notExitCode = (process, expected, msg) =>
+  chai.assert.notExitCode = (process: Process, expected, msg: string) =>
     new Assertion(process).not.to.have.exitCode(expected, msg);
 
   /**
    * @example
    * assert.exitCodeBetween(chaiExec.sync('cmd'), 0, 2);
    */
-  chai.assert.exitCodeBetween = (process, min, max, msg) => {
+  chai.assert.exitCodeBetween = (process: Process, min, max, msg: string) => {
     new Assertion(process).to.have.exitCode.that.is.above(min, msg);
     new Assertion(process).to.have.exitCode.that.is.below(max, msg);
   };
@@ -41,7 +34,7 @@ function exitCodeAssertions (chai, utils) {
    * @example
    * assert.exitCodeNotBetween(chaiExec.sync('cmd'), 4, 7);
    */
-  chai.assert.exitCodeNotBetween = (process, min, max, msg) => {
+  chai.assert.exitCodeNotBetween = (process: Process, min, max, msg: string) => {
     let exitCode = process.exitCode;
 
     if (exitCode > max) {
@@ -59,28 +52,28 @@ function exitCodeAssertions (chai, utils) {
    * chaiExec.sync('cmd').should.have.exitCode.that.is.oneOf([1, 2, 3]);
    * chaiExec.sync('cmd').should.have.code.that.is.above(100);
    */
-  Assertion.addChainableMethod("exitCode", exitCodeAssertion, exitCodeChainingBehavior);
-  Assertion.addChainableMethod("code", exitCodeAssertion, exitCodeChainingBehavior);
+  util.addChainableMethod("exitCode", exitCodeAssertion, exitCodeChainingBehavior);
+  util.addChainableMethod("code", exitCodeAssertion, exitCodeChainingBehavior);
 
   /**
    * @example
    * chaiExec.sync('cmd').should.exit.with.code(127);
    * chaiExec.sync('cmd').should.exit.with.code.above(100);
    */
-  Assertion.addProperty("exit", () => { /* no-op */ });
+  util.addProperty("exit", () => { /* no-op */ });
 
   /**
    * When used in a chain, the subject of the assertion is changed to the exit
    * code, so that further assertions can be performed on it.
    */
-  function exitCodeChainingBehavior () {
+  function exitCodeChainingBehavior() {
     // Make sure the subject of the assertion is a Process object
-    let process = flag(this, "object");
-    new Assertion(process).instanceOf(Process);
+    let process = util.flag(this, "object");
+    new Assertion(process).instanceOf(process);
 
     // Change the subject of the assertion to the exitCode
-    flag(this, "object", process.exitCode);
-    flag(this, "process", process);
+    util.flag(this, "object", process.exitCode);
+    util.flag(this, "process", process);
   }
 
   /**
@@ -89,16 +82,16 @@ function exitCodeAssertions (chai, utils) {
    * @param {number} expectedExitCode
    * @param {string} [msg]
    */
-  function exitCodeAssertion (expectedExitCode, msg) {
-    let actualExitCode = flag(this, "object");
-    let process = flag(this, "process");
+  function exitCodeAssertion(expectedExitCode, msg) {
+    let actualExitCode = util.flag(this, "object");
+    let process = util.flag(this, "process");
 
     // Set or get the message
     if (msg) {
-      flag(this, "message", msg);
+      util.flag(this, "message", msg);
     }
     else {
-      msg = flag(this, "message");
+      msg = util.flag(this, "message");
     }
 
     // It should be either a Number or a Array
@@ -135,6 +128,6 @@ function exitCodeAssertions (chai, utils) {
 
     // Change the subject of the assertion back to the Process object.
     // This allows chains such as `should.have.exitCode(0).and.stdout('ok')`
-    flag(this, "object", process);
+    util.flag(this, "object", process);
   }
 }
