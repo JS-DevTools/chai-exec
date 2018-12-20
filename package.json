@@ -30,7 +30,8 @@
   ],
   "scripts": {
     "lint": "eslint lib test",
-    "test": "mocha && npm run lint",
+    "test": "npm run test:javascript && npm run test:typescript && npm run lint",
+    "test:javascript": "mocha",
     "test:typescript": "tsc --noEmit test/specs/typescript-definition.spec.ts",
     "coverage": "nyc --reporter=text --reporter=lcov mocha",
     "upgrade": "npm-check -u",
