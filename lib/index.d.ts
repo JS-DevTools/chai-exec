@@ -1,8 +1,5 @@
 import chai = require("chai");
-import { BufferOptions, Options, Process, ProcessError } from "ez-spawn";
-
-// Aliases for EZ-Spawn types
-declare type CLI = Process<string | Buffer> | ProcessError<string | Buffer>;
+import { Options, Process } from "ez-spawn";
 
 /**
  * The Chai-Exec module
@@ -222,6 +219,15 @@ interface ChaiExecAsync {
   (command: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, options: Options): Promise<CLI>;
 }
 
+
+interface CLI extends Process<string | Buffer> {
+  /**
+   * The program's exit code (Alias for the `status` property)
+   */
+  exitCode: number;
+}
+
+
 declare global {
   namespace Chai {
     interface ChaiStatic {
@@ -266,8 +272,8 @@ declare global {
 
     interface Assertion {
       code: ExitCode;
+      status: ExitCode;
       exitCode: ExitCode;
-      with: ExitCode;
     }
 
     interface LanguageChains {
@@ -277,6 +283,7 @@ declare global {
     interface TypeComparison {
       exit: Assertion;
       code: ExitCode;
+      status: ExitCode;
       exitCode: ExitCode;
     }
 
