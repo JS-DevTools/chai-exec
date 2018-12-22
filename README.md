@@ -13,6 +13,18 @@ Chai Exec
 [![License](https://img.shields.io/npm/l/chai-exec.svg?maxAge=2592000)](LICENSE)
 
 
+Features
+--------------------------
+- **Easy to use**<br>
+  Pass your CLI and arguments as a single string, an array of strings, or as separate parameters.
+
+- **Fluent assertions**<br>
+  Test your CLI using intuitive fluent syntax, such as `myCLI.should.exit.with.code(0)` or `myCLI.stdout.should.contain("some string")`.
+
+- **Windows Support**<br>
+  Excellent Windows support, thanks to [cross-spawn](https://github.com/moxystudio/node-cross-spawn).
+
+
 Related Projects
 --------------------------
 - [ez-spawn](https://github.com/JS-DevTools/ez-spawn) - Simple, consistent process spawning
@@ -32,31 +44,26 @@ describe("My CLI", () => {
     let myCLI = chaiExec('my-cli --arg1 --arg2 "some other arg"');
 
     // Should syntax
-    myCLI.exitCode.should.equal(0);
-    myCLI.should.have.exitCode(0);
     myCLI.should.exit.with.code(0);
-    myCLI.should.exit.with.a.code.that.is.below(1);
-    myCLI.should.have.an.exit.code.of.at.least(0);
+    myCLI.stdout.should.contain("Success!");
+    myCLI.stderr.should.be.empty;
 
     // Expect sytnax
-    expect(myCLI.exitCode).to.equal(0);
-    expect(myCLI).to.have.exitCode(0);
     expect(myCLI).to.exit.with.code(0);
-    expect(myCLI).to.exit.with.a.code.that.is.below(1);
-    expect(myCLI).to.have.an.exit.code.of.at.least(0);
+    expect(myCLI).stdout.to.contain("Success!");
+    expect(myCLI).stderr.to.be.empty;
 
     // Assert syntax
-    assert.equal(myCLI.exitCode, 0);
     assert.exitCode(myCLI, 0);
-    assert.notExitCode(myCLI, 1);
-    assert.exitCodeBetween(myCLI, 0, 1);
+    assert.stdoutIncludes(myCLI, "Success!");
+    assert.stderr(myCLI, "");
   });
 });
 ```
 
+
 Installation
 --------------------------
-#### Node
 Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ```bash
