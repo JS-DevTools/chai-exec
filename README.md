@@ -32,20 +32,21 @@ describe("My CLI", () => {
     let myCLI = chaiExec('my-cli --arg1 --arg2 "some other arg"');
 
     // Should syntax
-    myCLI.should.exit.with(0);
+    myCLI.exitCode.should.equal(0);
+    myCLI.should.have.exitCode(0);
     myCLI.should.exit.with.code(0);
     myCLI.should.exit.with.a.code.that.is.below(1);
     myCLI.should.have.an.exit.code.of.at.least(0);
-    myCLI.should.have.exitCode(0);
 
     // Expect sytnax
-    expect(myCLI).to.exit.with(0);
+    expect(myCLI.exitCode).to.equal(0);
+    expect(myCLI).to.have.exitCode(0);
     expect(myCLI).to.exit.with.code(0);
     expect(myCLI).to.exit.with.a.code.that.is.below(1);
     expect(myCLI).to.have.an.exit.code.of.at.least(0);
-    expect(myCLI).to.have.exitCode(0);
 
     // Assert syntax
+    assert.equal(myCLI.exitCode, 0);
     assert.exitCode(myCLI, 0);
     assert.notExitCode(myCLI, 1);
     assert.exitCodeBetween(myCLI, 0, 1);
