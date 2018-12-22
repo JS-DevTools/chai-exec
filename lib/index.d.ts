@@ -1,5 +1,5 @@
 import chai = require("chai");
-import { Options, Process } from "ez-spawn";
+import { Options } from "ez-spawn";
 
 /**
  * The Chai-Exec module
@@ -220,11 +220,21 @@ interface ChaiExecAsync {
 }
 
 
-interface CLI extends Process<string | Buffer> {
-  /**
-   * The program's exit code (Alias for the `status` property)
-   */
+interface CLI {
+  command: string;
+  args: string[];
+  pid: number;
+  stdout: string;
+  stderr: string;
+  output: string;
+  status: number;
   exitCode: number;
+  signal: string | null;
+
+  /**
+   * Returns the command and arguments used to spawn the process
+   */
+  toString(): string;
 }
 
 
@@ -268,12 +278,42 @@ declare global {
        * assert.exitCodeNotBetween(cli, 4, 7);
        */
       exitCodeNotBetween(cli: CLI, min: number, max: number, msg?: string);
+
+      /**
+       * Asserts that the CLI had the expected standard output
+       *
+       * @example
+       * assert.stdout(cli, "Sucess!");
+       * assert.stdout(cli, /^Sucess!$/);
+       */
+      stdout(cli: CLI, expected: string | RegExp, msg?: string);
+
+      /**
+       * Asserts that the CLI had the expected error output
+       *
+       * @example
+       * assert.stderr(cli, "Failure!");
+       * assert.stderr(cli, /^Failure!$/);
+       */
+      stderr(cli: CLI, expected: string | RegExp, msg?: string);
+
+      /**
+       * Asserts that the CLI had the expected output (stdout + stderr)
+       *
+       * @example
+       * assert.output(cli, "Sucess!");
+       * assert.output(cli, /^(Sucess|Failure)!$/);
+       */
+      output(cli: CLI, expected: string | RegExp, msg?: string);
     }
 
     interface Assertion {
       code: ExitCode;
       status: ExitCode;
       exitCode: ExitCode;
+      stdout: Stdio;
+      stderr: Stdio;
+      output: Stdio;
     }
 
     interface LanguageChains {
@@ -285,6 +325,9 @@ declare global {
       code: ExitCode;
       status: ExitCode;
       exitCode: ExitCode;
+      stdout: Stdio;
+      stderr: Stdio;
+      output: Stdio;
     }
 
     interface ExitCode extends Assertion {
@@ -297,6 +340,18 @@ declare global {
        * cli.should.exit.with.a.code.that.is.above(100);
        */
       (exitCode: number, msg?: string): Assertion;
+    }
+
+    interface Stdio extends Assertion {
+      /**
+       * Asserts that the CLI had the expected output
+       *
+       * @example
+       * cli.should.have.stdout(0);
+       * cli.should.have.stderr.that.contains("Error Message");
+       * cli.should.have.output.that.matches(/^Success!$/);
+       */
+      (expected: string, msg?: string): Assertion;
     }
   }
 }
