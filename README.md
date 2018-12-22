@@ -79,6 +79,134 @@ chai.use(chaiExec);
 ```
 
 
+Assertions
+--------------------------
+
+### `.exitCode(number, [message])`
+
+**aliases:** `.exit.code` or `.status`
+
+Asserts on your CLI's exit code.  You can test for a specific code, a list of codes, or a range.
+
+```javascript
+// Should syntax
+myCLI.exitCode.should.equal(0);
+myCLI.should.have.exitCode(0);
+myCLI.should.exit.with.code(0);
+myCLI.should.exit.with.a.code.that.is.oneOf(0, [0, 1, 2, 3]);
+myCLI.should.have.an.exit.code.of.at.least(0).and.at.most(5);
+
+// Expect sytnax
+expect(myCLI).exitCode.to.equal(0);
+expect(myCLI).to.have.exitCode(0);
+expect(myCLI).to.exit.with.code(0);
+expect(myCLI).to.exit.with.a.code.that.is.oneOf([0, 1, 2, 3]);
+expect(myCLI).to.have.an.exit.code.of.at.least(0).and.at.most(5);
+
+// Assert syntax
+assert.equal(myCLI.exitCode, 0);
+
+assert.exitCode(myCLI, 0);
+assert.exitCode(myCLI, [0, 1, 2, 3]);
+
+assert.notExitCode(myCLI, 1);
+assert.notExitCode(myCLI, [1, 2, 3]);
+
+assert.exitCodeBetween(myCLI, 0, 5);
+assert.exitCodeNotBetween(myCLI, 1, 5);
+```
+
+### `.stdout(string, [message])`
+
+Asserts on your CLI's standard output (non-error, non-warning output).  You can test for a specific string, a substring, or a regular expression.
+
+```javascript
+// Should syntax
+myCLI.stdout.should.equal("Success!");
+myCLI.should.have.stdout.that.contains("Success!");
+myCLI.should.have.stdout.that.does.not.contain("Failure!");
+myCLI.should.have.stdout.that.matches(/^Success!$/);
+myCLI.should.have.stdout.that.does.not.match(/^Failure!$/);
+
+// Expect syntax
+expect(myCLI).stdout.to.equal("Success!");
+expect(myCLI).to.have.stdout.that.contains("Success!");
+expect(myCLI).to.have.stdout.that.does.not.contain("Failure!");
+expect(myCLI).to.have.stdout.that.matches(/^Success!$/);
+expect(myCLI).to.have.stdout.that.does.not.match(/^Failure!$/);
+
+// Assert syntax
+assert.stdout(myCLI, "Success!");
+assert.stdout(myCLI, /^Success!$/);
+
+assert.include(myCLI.stdout, "Success!");
+assert.notInclude(myCLI.stdout, "Failure!");
+
+assert.match(myCLI.stdout, /^Success!$/);
+assert.notMatch(myCLI.stdout, /^Failure!$/);
+```
+
+### `.stderr(string, [message])`
+
+Asserts on your CLI's stderr output (errors and warnings).  You can test for a specific string, a substring, or a regular expression.
+
+```javascript
+// Should syntax
+myCLI.stderr.should.equal("Failure!");
+myCLI.should.have.stderr.that.contains("Failure!");
+myCLI.should.have.stderr.that.does.not.contain("Success!");
+myCLI.should.have.stderr.that.matches(/^Failure!$/);
+myCLI.should.have.stderr.that.does.not.match(/^Success!$/);
+
+// Expect syntax
+expect(myCLI).stderr.to.equal("Failure!");
+expect(myCLI).to.have.stderr.that.contains("Failure!");
+expect(myCLI).to.have.stderr.that.does.not.contain("Success!");
+expect(myCLI).to.have.stderr.that.matches(/^Failure!$/);
+expect(myCLI).to.have.stderr.that.does.not.match(/^Success!$/);
+
+// Assert syntax
+assert.stderr(myCLI, "Failure!");
+assert.stderr(myCLI, /^Failure!$/);
+
+assert.include(myCLI.stderr, "Failure!");
+assert.notInclude(myCLI.stderr, "Success!");
+
+assert.match(myCLI.stderr, /^Failure!$/);
+assert.notMatch(myCLI.stderr, /^Success!$/);
+```
+
+### `.output(string, [message])`
+
+Asserts on **all** of your CLI's output (stdout + output).  You can test for a specific string, a substring, or a regular expression.
+
+```javascript
+// Should syntax
+myCLI.output.should.equal("Success!");
+myCLI.should.have.output.that.contains("Failure!");
+myCLI.should.have.output.that.does.not.contain("Success!");
+myCLI.should.have.output.that.matches(/^(Success|Failure)!$/);
+myCLI.should.have.output.that.does.not.match(/^(Success|Failure)!$/);
+
+// Expect syntax
+expect(myCLI).output.to.equal("Success!");
+expect(myCLI).to.have.output.that.contains("Failure!");
+expect(myCLI).to.have.output.that.does.not.contain("Success!");
+expect(myCLI).to.have.output.that.matches(/^(Success|Failure)!$/);
+expect(myCLI).to.have.output.that.does.not.match(/^(Success|Failure)!$/);
+
+// Assert syntax
+assert.output(myCLI, "Failure!");
+assert.output(myCLI, /^(Success|Failure)!$/);
+
+assert.include(myCLI.output, "Failure!");
+assert.notInclude(myCLI.output, "Success!");
+
+assert.match(myCLI.output, /^Failure!$/);
+assert.notMatch(myCLI.output, /^Success!$/);
+```
+
+
 Contributing
 --------------------------
 Contributions, enhancements, and bug-fixes are welcome! [File an issue](https://github.com/JS-DevTools/chai-exec/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/chai-exec/pulls).
