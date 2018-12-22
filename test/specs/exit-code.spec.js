@@ -8,7 +8,7 @@ const assert = chai.assert;
 chai.use(chaiExec);
 chai.should();
 
-describe("exit-code", () => {
+describe("exitCode", () => {
   let exitWithZero = chaiExec("test/fixtures/bin/exit-code 0");
   let exitWithOne = chaiExec("test/fixtures/bin/exit-code 1");
   let exitWithFive = chaiExec("test/fixtures/bin/exit-code 5");
@@ -72,11 +72,11 @@ describe("exit-code", () => {
 
     it("should be chainable with other assertions", () => {
       // Expect syntax
-      expect(exitWithZero).to.exit.with.code(0).and.be.an("object");
-      expect(exitWithOne).to.have.exitCode(1).and.be.an("object");
+      expect(exitWithZero).to.exit.with.code(0).and.have.stdout("Process was exited with code 0\n");
+      expect(exitWithOne).to.have.exitCode(1).with.stderr.that.contains("exited with code 1");
 
       // Should syntax
-      exitWithZero.should.have.exitCode(0).and.be.an("object");
+      exitWithZero.should.have.exitCode(0).and.have.stdout.with.lengthOf(31);
       exitWithOne.should.exit.with.code(1).and.be.an("object");
     });
   });
