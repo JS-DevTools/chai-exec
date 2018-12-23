@@ -6,9 +6,13 @@ const { chaiExecSync, chaiExecAsync } = chaiExec;
 const options = { cwd: "/usr/local/bin" };
 
 chai.use(chaiExec);
-chai.should();
+chai.use(chaiExecSync);
+chai.use(chaiExecAsync);
 
 export function testChaiExec() {
+  // Chai Plugin signature
+  chaiExec(chai, {});
+
   // Sync signatures without options
   chaiExec('git commit -am "Fixed a bug"');
   chaiExec(["git", "commit", "-am", "Fixed a bug"]);
@@ -23,6 +27,9 @@ export function testChaiExec() {
 }
 
 export function testChaiExecSync() {
+  // Chai Plugin signature
+  chaiExecSync(chai, {});
+
   // Sync signatures without options
   chaiExecSync('git commit -am "Fixed a bug"');
   chaiExecSync(["git", "commit", "-am", "Fixed a bug"]);
@@ -37,6 +44,9 @@ export function testChaiExecSync() {
 }
 
 export async function testChaiExecAsync() {
+  // Chai Plugin signature
+  chaiExecAsync(chai, {});
+
   // Promise signatures without options
   await chaiExecAsync('git commit -am "Fixed a bug"');
   await chaiExecAsync(["git", "commit", "-am", "Fixed a bug"]);

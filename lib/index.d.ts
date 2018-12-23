@@ -12,20 +12,21 @@ declare const chaiExec: ChaiExec;
 export = chaiExec;
 
 interface ChaiExec extends ChaiExecSync {
+  chaiExecSync: ChaiExecSync;
+  chaiExecAsync: ChaiExecAsync;
+}
+
+interface ChaiPlugin {
   /**
    * The Chai-Exec plugin
    *
    * @example
    * chai.use(chaiExec);
    */
-  (chai: any, util: any): void;
-
-  chaiExec: ChaiExec;
-  chaiExecSync: ChaiExecSync;
-  chaiExecAsync: ChaiExecAsync;
+  (chai: Chai.ChaiStatic, util: object): void;
 }
 
-interface ChaiExecSync {
+interface ChaiExecSync extends ChaiPlugin {
   /**
    * Synchronously executes the specified CLI and returns the results
    *
@@ -122,7 +123,7 @@ interface ChaiExecSync {
   (command: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, options: Options): CLI;
 }
 
-interface ChaiExecAsync {
+interface ChaiExecAsync extends ChaiPlugin {
   /**
    * Asynchronously executes the specified CLI and returns the results via a Promise
    *
