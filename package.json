@@ -1,6 +1,6 @@
 {
   "name": "chai-exec",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Chai assertions for testing your CLI",
   "keywords": [
     "chai",
