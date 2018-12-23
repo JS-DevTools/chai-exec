@@ -34,25 +34,26 @@ describe("chaiExecSync", () => {
 });
 
 describe("chaiExecAsync", () => {
-  it("should return asynchronously", async () => {
-    let cli = await chaiExecAsync("test/fixtures/bin/echo-args --foo --bar");
+  it("should return asynchronously", () => {
+    chaiExecAsync("test/fixtures/bin/echo-args --foo --bar")
+      .then((cli) => {
+        // Expect syntax
+        expect(cli).exit.code.to.equal(0);
+        expect(cli).stdout.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
+        expect(cli).stderr.to.be.empty;
+        expect(cli).output.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
 
-    // Expect syntax
-    expect(cli).exit.code.to.equal(0);
-    expect(cli).stdout.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
-    expect(cli).stderr.to.be.empty;
-    expect(cli).output.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
+        // Should syntax
+        cli.should.have.exit.code(0);
+        cli.should.have.stdout.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
+        cli.should.have.stderr.that.is.empty;
+        cli.should.have.output.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
 
-    // Should syntax
-    cli.should.have.exit.code(0);
-    cli.should.have.stdout.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
-    cli.should.have.stderr.that.is.empty;
-    cli.should.have.output.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
-
-    // Assert syntax
-    assert.exitCode(cli, 0);
-    assert.stdout(cli, "Argument #1: --foo\nArgument #2: --bar\n");
-    assert.stderr(cli, "");
-    assert.output(cli, "Argument #1: --foo\nArgument #2: --bar\n");
+        // Assert syntax
+        assert.exitCode(cli, 0);
+        assert.stdout(cli, "Argument #1: --foo\nArgument #2: --bar\n");
+        assert.stderr(cli, "");
+        assert.output(cli, "Argument #1: --foo\nArgument #2: --bar\n");
+      });
   });
 });
