@@ -36,6 +36,7 @@ Examples
 ```javascript
 const chaiExec = require("chai-exec");
 const chai = require("chai");
+
 chai.use(chaiExec);
 
 describe("My CLI", () => {
@@ -55,7 +56,7 @@ describe("My CLI", () => {
 
     // Assert syntax
     assert.exitCode(myCLI, 0);
-    assert.stdoutIncludes(myCLI, "Success!");
+    assert.stdout(myCLI, "Success!");
     assert.stderr(myCLI, "");
   });
 });
@@ -75,8 +76,66 @@ Then require it in your test file and register it with Chai:
 ```javascript
 const chaiExec = require("chai-exec");
 const chai = require("chai");
+
 chai.use(chaiExec);
 ```
+
+
+Usage
+--------------------------
+
+### `chaiExec(cli, [args], [options])`
+
+You can pass your CLI and its arguments as a single string, an array of strings, or as separate parameters.  The following examples all do the same thing:
+
+```javascript
+chaiExec(`git commit -am "Fixed a bug"`);           // Pass the CLI and args as a single string
+chaiExec("git", "commit", "-am", "Fixed a bug");    // Pass the CLI and args as separate params
+chaiExec(["git", "commit", "-am", "Fixed a bug"]);  // Pass the CLI and args as an array
+chaiExec("git", ["commit", "-am", "Fixed a bug"]);  // Pass the CLI as a string and args as an array
+```
+
+See [ez-spawn options](https://github.com/JS-DevTools/ez-spawn#options-object) for details about the `options` parameter.
+
+### `chaiExecAsync(cli, [args], [options])`
+
+The `chaiExecAsync()` function works exactly the same as `chaiExec()`, except that it runs your CLI asynchronously and returns a `Promise` that resolves when the CLI exits.  You'll need to explicitly require the `chaiExecAsync` export, like this:
+
+```javascript
+const { chaiExecAsync } = require("chai-exec");
+```
+
+You can then use `chaiExecAsync` exactly the same as `chaiExec`, but remember to use the `async` and `await` keywords, since it's asynchronous.
+
+```javascript
+const { chaiExecAsync } = require("chai-exec");
+const chai = require("chai");
+
+chai.use(chaiExecAsync);
+
+describe("My CLI", () => {
+  it("should exit with a zero exit code", async () => {
+    // Run your CLI
+    let myCLI = await chaiExecAsync('my-cli --arg1 --arg2 "some other arg"');
+
+    // Should syntax
+    myCLI.should.exit.with.code(0);
+    myCLI.stdout.should.contain("Success!");
+    myCLI.stderr.should.be.empty;
+
+    // Expect sytnax
+    expect(myCLI).to.exit.with.code(0);
+    expect(myCLI).stdout.to.contain("Success!");
+    expect(myCLI).stderr.to.be.empty;
+
+    // Assert syntax
+    assert.exitCode(myCLI, 0);
+    assert.stdout(myCLI, "Success!");
+    assert.stderr(myCLI, "");
+  });
+});
+```
+
 
 
 Assertions
