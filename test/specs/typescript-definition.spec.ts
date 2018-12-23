@@ -13,6 +13,12 @@ export function testChaiExec() {
   // Chai Plugin signature
   chaiExec(chai, {});
 
+  // Defaults
+  chaiExec.defaults.command = "git";
+  chaiExec.defaults.args = "commit -am";
+  chaiExec.defaults.args = ["commit", "-am"];
+  chaiExec.defaults.options = options;
+
   // Sync signatures without options
   chaiExec('git commit -am "Fixed a bug"');
   chaiExec(["git", "commit", "-am", "Fixed a bug"]);
@@ -30,6 +36,12 @@ export function testChaiExecSync() {
   // Chai Plugin signature
   chaiExecSync(chai, {});
 
+  // Defaults
+  chaiExecSync.defaults.command = "git";
+  chaiExecSync.defaults.args = "commit -am";
+  chaiExecSync.defaults.args = ["commit", "-am"];
+  chaiExecSync.defaults.options = options;
+
   // Sync signatures without options
   chaiExecSync('git commit -am "Fixed a bug"');
   chaiExecSync(["git", "commit", "-am", "Fixed a bug"]);
@@ -46,6 +58,12 @@ export function testChaiExecSync() {
 export async function testChaiExecAsync() {
   // Chai Plugin signature
   chaiExecAsync(chai, {});
+
+  // Defaults
+  chaiExecAsync.defaults.command = "git";
+  chaiExecAsync.defaults.args = "commit -am";
+  chaiExecAsync.defaults.args = ["commit", "-am"];
+  chaiExecAsync.defaults.options = options;
 
   // Promise signatures without options
   await chaiExecAsync('git commit -am "Fixed a bug"');

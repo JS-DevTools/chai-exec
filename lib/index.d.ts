@@ -27,6 +27,8 @@ interface ChaiPlugin {
 }
 
 interface ChaiExecSync extends ChaiPlugin {
+  defaults: Defaults;
+
   /**
    * Synchronously executes the specified CLI and returns the results
    *
@@ -124,6 +126,8 @@ interface ChaiExecSync extends ChaiPlugin {
 }
 
 interface ChaiExecAsync extends ChaiPlugin {
+  defaults: Defaults;
+
   /**
    * Asynchronously executes the specified CLI and returns the results via a Promise
    *
@@ -218,6 +222,27 @@ interface ChaiExecAsync extends ChaiPlugin {
    * @param options - EZ-Spawn options
    */
   (command: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, options: Options): Promise<CLI>;
+}
+
+
+/**
+ * Default values for all calls to `chaiExec` or `chaiExecAsync`
+ */
+interface Defaults {
+  /**
+   * The command to prepend to all calls
+   */
+  command?: string;
+
+  /**
+   * The args to prepend to all calls
+   */
+  args?: string | string[];
+
+  /**
+   * The options to use for all calls
+   */
+  options?: Options,
 }
 
 
