@@ -83,6 +83,41 @@ describe("exitCode", () => {
 
   describe("failed assertions", () => {
 
+    it("should throw a useful error when the exitCode is invalid", () => {
+      // Expect syntax
+      (() => {
+        let cli = chaiExec();
+        expect(cli).to.exit.with.code(999);
+      }).should.throw('expected "" to exit with a code of 999, but it exited with null');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        expect(cli).to.have.exitCode(999, "my custom message");
+      }).should.throw("my custom message");
+
+      // Should syntax
+      (() => {
+        let cli = chaiExec();
+        cli.should.exit.with.code(999);
+      }).should.throw('expected "" to exit with a code of 999, but it exited with null');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        cli.should.have.exitCode(999, "my custom message");
+      }).should.throw("my custom message");
+
+      // Assert syntax
+      (() => {
+        let cli = chaiExec();
+        assert.exitCode(cli, 999);
+      }).should.throw('expected "" to exit with a code of 999, but it exited with null');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        assert.exitCode(cli, 999, "my custom message");
+      }).should.throw("my custom message");
+    });
+
     it("should test exit code equality", () => {
       // Expect syntax
       (() => {

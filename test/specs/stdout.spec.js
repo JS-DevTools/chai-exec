@@ -80,6 +80,41 @@ describe("stdout", () => {
 
   describe("failed assertions", () => {
 
+    it("should throw a useful error when the exitCode is invalid", () => {
+      // Expect syntax
+      (() => {
+        let cli = chaiExec();
+        expect(cli).to.have.stdout("something");
+      }).should.throw('expected "" stdout to equal \'something\'');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        expect(cli).to.have.stdout("something", "my custom message");
+      }).should.throw("my custom message");
+
+      // Should syntax
+      (() => {
+        let cli = chaiExec();
+        cli.should.have.stdout("something");
+      }).should.throw('expected "" stdout to equal \'something\'');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        cli.should.have.stdout("something", "my custom message");
+      }).should.throw("my custom message");
+
+      // Assert syntax
+      (() => {
+        let cli = chaiExec();
+        assert.stdout(cli, "something");
+      }).should.throw('expected "" stdout to equal \'something\'');
+
+      (() => {
+        let cli = chaiExec("does/not/exist");
+        assert.stdout(cli, "something", "my custom message");
+      }).should.throw("my custom message");
+    });
+
     it("should test stdout equality", () => {
       // Expect syntax
       (() => {
