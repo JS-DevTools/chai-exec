@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+/**
+ *
+ * This program prints the names and values of the specified environment variables
+ *
+ */
+"use strict";
+
+process.argv.slice(2).forEach((arg) => {
+  console.log(`${arg}: ${process.env[arg]}`);
+});
