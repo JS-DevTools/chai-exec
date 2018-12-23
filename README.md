@@ -18,8 +18,14 @@ Features
 - **Easy to use**<br>
   Pass your CLI and arguments as a single string, an array of strings, or as separate parameters.
 
+- **Don't repeat yourself**<br>
+  Set your common [defaults](#chaiexecdefaults) _once_.  Each test ony needs to specify the arguments that are unique to it.
+
 - **Fluent assertions**<br>
   Test your CLI using intuitive fluent syntax, such as `myCLI.should.exit.with.code(0)` or `myCLI.stdout.should.contain("some string")`.
+
+- **Async Support**<br>
+  Just use `await chaiExecAsync()` instead of `chaiExec()`.  Everything else is the same.
 
 - **Windows Support**<br>
   Excellent Windows support, thanks to [cross-spawn](https://github.com/moxystudio/node-cross-spawn).
