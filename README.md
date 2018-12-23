@@ -136,6 +136,44 @@ describe("My CLI", () => {
 });
 ```
 
+### `chaiExec.defaults`
+
+When writing tests for a CLI, you'll often want to use the same command, args, and/or options for every test.  Rather than repeating the same parameters every time you call `chaiExec`, you can just set `chaiExec.defaults` once.  Your default values will be used for every subsequent `chaiExec()` call.  You can specify additional CLI arguments and/or options for each call, in addition to the defaults.
+
+- `defaults.command` (string)<br>
+  The name or path of your CLI.  Set this once, and then you only ever need to pass arguments to `chaiExec()`
+
+- `defaults.args` (string or array of strings)<br>
+  Arguments to pass to your CLI every time.  If you pass additional arguments when you call `chaiExec()`, they will be appended to the default arguments.
+
+- `defaults.options` ([options object](https://github.com/JS-DevTools/ez-spawn#options-object))<br>
+  Default options to use every time.  If you pass additional options when you call `chaiExec()`, they will be merged with the default arguments.
+
+```javascript
+const chaiExec = require("chai-exec");
+const chai = require("chai");
+
+chai.use(chaiExec);
+
+// Set some defaults
+chaiExec.defaults = {
+  command: "my-cli",
+  args: "--arg1 --arg2",
+  options: {
+    cwd: "/usr/bin"
+  }
+};
+
+describe("My CLI", () => {
+  it("should use defaults", () => {
+    // Run your CLI using defaults + one-time args
+    let myCLI("--arg3 --arg4");
+
+    myCLI.command.should.equal("my-cli");
+    myCLI.args.should.deep.equal([ "--arg1", "--arg2", "--arg3", "--arg4" ]);
+  });
+});
+```
 
 
 Assertions
