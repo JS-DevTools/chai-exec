@@ -52,7 +52,7 @@
     "version-bump-prompt": "^4.2.2"
   },
   "dependencies": {
-    "ez-spawn": "^2.1.0"
+    "ez-spawn": "^2.1.1"
   },
   "engines": {
     "node": ">=6"
