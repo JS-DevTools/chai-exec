@@ -1,5 +1,5 @@
 import chai = require("chai");
-import { Options } from "ez-spawn";
+import { Options } from "@jsdevtools/ez-spawn";
 
 /**
  * The Chai-Exec module
