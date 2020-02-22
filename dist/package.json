@@ -1,0 +1,38 @@
+{
+  "name": "chai-exec",
+  "version": "X.X.X",
+  "description": "Chai assertions for testing your CLI",
+  "keywords": [
+    "chai",
+    "chai-plugin",
+    "cli",
+    "spawn",
+    "exec"
+  ],
+  "author": {
+    "name": "Randall Krauskopf",
+    "url": "http://github.com/rkrauskopf"
+  },
+  "contributors": [
+    "Randall Krauskopf (http://github.com/rkrauskopf)",
+    "James Messinger (https://jamesmessinger.com)"
+  ],
+  "license": "MIT",
+  "homepage": "https://jstools.dev/chai-exec",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JS-DevTools/chai-exec.git"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@jsdevtools/chai-exec": "X.X.X"
+  }
+}
