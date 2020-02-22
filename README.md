@@ -9,8 +9,8 @@ Chai Exec
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/chai-exec/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/chai-exec?branch=master)
 [![Dependencies](https://david-dm.org/JS-DevTools/chai-exec.svg)](https://david-dm.org/JS-DevTools/chai-exec)
 
-[![npm](https://img.shields.io/npm/v/chai-exec.svg?maxAge=43200)](https://www.npmjs.com/package/chai-exec)
-[![License](https://img.shields.io/npm/l/chai-exec.svg?maxAge=2592000)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@jsdevtools/chai-exec.svg?maxAge=43200)](https://www.npmjs.com/package/@jsdevtools/chai-exec)
+[![License](https://img.shields.io/npm/l/@jsdevtools/chai-exec.svg?maxAge=2592000)](LICENSE)
 
 
 Features
@@ -40,7 +40,7 @@ Examples
 --------------------------
 
 ```javascript
-const chaiExec = require("chai-exec");
+const chaiExec = require("@jsdevtools/chai-exec");
 const chai = require("chai");
 
 chai.use(chaiExec);
@@ -74,13 +74,13 @@ Installation
 Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ```bash
-npm install chai-exec
+npm install @jsdevtools/chai-exec
 ```
 
 Then require it in your test file and register it with Chai:
 
 ```javascript
-const chaiExec = require("chai-exec");
+const chaiExec = require("@jsdevtools/chai-exec");
 const chai = require("chai");
 
 chai.use(chaiExec);
@@ -108,13 +108,13 @@ See [ez-spawn options](https://github.com/JS-DevTools/ez-spawn#options-object) f
 The `chaiExecAsync()` function works exactly the same as `chaiExec()`, except that it runs your CLI asynchronously and returns a `Promise` that resolves when the CLI exits.  You'll need to explicitly require the `chaiExecAsync` export, like this:
 
 ```javascript
-const { chaiExecAsync } = require("chai-exec");
+const { chaiExecAsync } = require("@jsdevtools/chai-exec");
 ```
 
 You can then use `chaiExecAsync` exactly the same as `chaiExec`, but remember to use the `async` and `await` keywords, since it's asynchronous.
 
 ```javascript
-const { chaiExecAsync } = require("chai-exec");
+const { chaiExecAsync } = require("@jsdevtools/chai-exec");
 const chai = require("chai");
 
 chai.use(chaiExecAsync);
@@ -156,7 +156,7 @@ When writing tests for a CLI, you'll often want to use the same command, args, a
   Default options to use every time.  If you pass additional options when you call `chaiExec()`, they will be merged with the default arguments.
 
 ```javascript
-const chaiExec = require("chai-exec");
+const chaiExec = require("@jsdevtools/chai-exec");
 const chai = require("chai");
 
 chai.use(chaiExec);
@@ -329,7 +329,7 @@ To build/test the project locally on your computer:
 
 License
 --------------------------
-chai-exec is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
+Chai Exec is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
 
 
 Big Thanks To
