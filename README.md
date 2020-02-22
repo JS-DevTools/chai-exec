@@ -3,8 +3,8 @@ Chai Exec
 
 #### Chai assertions for testing your CLI
 
-[![Cross-Platform Compatibility](https://jstools.dev/img/badges/os-badges.svg)](https://travis-ci.com/JS-DevTools/chai-exec)
-[![Build Status](https://api.travis-ci.com/JS-DevTools/chai-exec.svg?branch=master)](https://travis-ci.com/JS-DevTools/chai-exec)
+[![Cross-Platform Compatibility](https://jstools.dev/img/badges/os-badges.svg)](https://github.com/JS-DevTools/chai-exec/blob/master/.github/workflows/CI-CD.yaml)
+[![Build Status](https://github.com/JS-DevTools/chai-exec/workflows/CI-CD/badge.svg)](https://github.com/JS-DevTools/chai-exec/blob/master/.github/workflows/CI-CD.yaml)
 
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/chai-exec/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/chai-exec?branch=master)
 [![Dependencies](https://david-dm.org/JS-DevTools/chai-exec.svg)](https://david-dm.org/JS-DevTools/chai-exec)
