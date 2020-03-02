@@ -149,6 +149,10 @@ describe("defaults", () => {
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
       cli.args.should.deep.equal(["foo", "bar"]);
+
+      cli.should.have.exitCode(0);
+      cli.stderr.should.equal("");
+      cli.stdout.should.equal("foo: Hello\nbar: world\n");
       cli.should.have.stdout("foo: Hello\nbar: world\n");
     });
 
