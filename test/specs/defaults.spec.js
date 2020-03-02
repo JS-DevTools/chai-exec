@@ -142,8 +142,8 @@ describe("defaults", () => {
     });
   });
 
-  describe.skip("defaults.options", () => {
-    it("should use the default options", () => {
+  describe("defaults.options", () => {
+    it.skip("should use the default options", () => {
       chaiExec.defaults.options = { env: { foo: "Hello", bar: "world" }};
       let cli = chaiExec("test/fixtures/bin/echo-env foo bar");
 
