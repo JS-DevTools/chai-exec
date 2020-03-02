@@ -7,6 +7,8 @@
  */
 "use strict";
 
-process.argv.slice(2).forEach((arg, index) => {
+let args = process.argv.slice(2);
+
+for (let [index, arg] of args.entries()) {
   console.log(`Argument #${index + 1}: ${arg}`);
-});
+}

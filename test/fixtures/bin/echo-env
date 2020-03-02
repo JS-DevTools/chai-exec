@@ -7,6 +7,13 @@
  */
 "use strict";
 
-process.argv.slice(2).forEach((arg) => {
-  console.log(`${arg}: ${process.env[arg]}`);
-});
+let variableNames = process.argv.slice(2);
+
+if (variableNames.length === 0) {
+  console.log("No environment variables were specified");
+}
+else {
+  for (let name of variableNames) {
+    console.log(`${name}: ${process.env[name]}`);
+  }
+}
