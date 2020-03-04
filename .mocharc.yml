@@ -9,6 +9,6 @@ spec:
   # Test specs
   - test/specs/**/*.spec.js
 
-bail: true
+bail: false
 recursive: true
 retries: 2
