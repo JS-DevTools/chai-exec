@@ -5,7 +5,7 @@ Chai Exec adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-[v2.0.0](https://github.com/JS-DevTools/chai-exec/tree/v2.0.0) (2020-02-22)
+[v2.0.0](https://github.com/JS-DevTools/chai-exec/tree/v2.0.0) (2020-03-04)
 ----------------------------------------------------------------------------------------------------
 
 - Moved Chai Exec to the [@JSDevTools scope](https://www.npmjs.com/org/jsdevtools) on NPM
