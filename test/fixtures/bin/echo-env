@@ -9,8 +9,6 @@
 
 let variableNames = process.argv.slice(2);
 
-console.log("TEST");
-
 if (variableNames.length === 0) {
   console.log("No environment variables were specified");
 }
