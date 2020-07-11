@@ -144,7 +144,7 @@ describe("defaults", () => {
 
   describe("defaults.options", () => {
     it("should use the default options", () => {
-      chaiExec.defaults.options = { env: { ...process.env, foo: "Hello", bar: "world" }};
+      chaiExec.defaults.options = { env: { ...process.env, NODE_OPTIONS: "", foo: "Hello", bar: "world" }};
       let cli = chaiExec("test/fixtures/bin/echo-env foo bar");
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
@@ -155,7 +155,7 @@ describe("defaults", () => {
 
     it("should use the default command and options", () => {
       chaiExec.defaults.command = "test/fixtures/bin/echo-env";
-      chaiExec.defaults.options = { env: { ...process.env, foo: "Hello", bar: "world" }};
+      chaiExec.defaults.options = { env: { ...process.env, NODE_OPTIONS: "", foo: "Hello", bar: "world" }};
       let cli = chaiExec("foo bar");
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
@@ -166,7 +166,7 @@ describe("defaults", () => {
     it("should use the default command, args, and options", () => {
       chaiExec.defaults.command = "test/fixtures/bin/echo-env";
       chaiExec.defaults.args = "foo bar";
-      chaiExec.defaults.options = { env: { ...process.env, foo: "Hello", bar: "world" }};
+      chaiExec.defaults.options = { env: { ...process.env, NODE_OPTIONS: "", foo: "Hello", bar: "world" }};
       let cli = chaiExec();
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
@@ -176,7 +176,7 @@ describe("defaults", () => {
 
     it("should append args to the default args, and options", () => {
       chaiExec.defaults.args = ["foo", "bar"];
-      chaiExec.defaults.options = { env: { ...process.env, foo: "Hello", bar: "world", biz: "AAA", baz: "BBB" }};
+      chaiExec.defaults.options = { env: { ...process.env, NODE_OPTIONS: "", foo: "Hello", bar: "world", biz: "AAA", baz: "BBB" }};
       let cli = chaiExec(["test/fixtures/bin/echo-env", "biz", "baz"]);
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
@@ -187,7 +187,7 @@ describe("defaults", () => {
     it("should append args to the default command, args, and options", () => {
       chaiExec.defaults.command = "test/fixtures/bin/echo-env";
       chaiExec.defaults.args = "foo bar";
-      chaiExec.defaults.options = { env: { ...process.env, foo: "Hello", bar: "world", biz: "AAA", baz: "BBB" }};
+      chaiExec.defaults.options = { env: { ...process.env, NODE_OPTIONS: "", foo: "Hello", bar: "world", biz: "AAA", baz: "BBB" }};
       let cli = chaiExec("biz baz");
 
       cli.command.should.equal("test/fixtures/bin/echo-env");
