@@ -1,5 +1,5 @@
-import chai = require("chai");
-import chaiExec = require("../../");
+import * as chai from "chai";
+import * as chaiExec from "../../";
 
 const { assert, expect } = chai;
 const { chaiExecSync, chaiExecAsync } = chaiExec;

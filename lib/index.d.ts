@@ -1,4 +1,3 @@
-import chai = require("chai");
 import { Options } from "@jsdevtools/ez-spawn";
 
 /**
@@ -16,15 +15,13 @@ interface ChaiExec extends ChaiExecSync {
   chaiExecAsync: ChaiExecAsync;
 }
 
-interface ChaiPlugin {
-  /**
-   * The Chai-Exec plugin
-   *
-   * @example
-   * chai.use(chaiExec);
-   */
-  (chai: Chai.ChaiStatic, util: object): void;
-}
+/**
+ * The Chai-Exec plugin
+ *
+ * @example
+ * chai.use(chaiExec);
+ */
+type ChaiPlugin = (chai: Chai.ChaiStatic, util: object) => void;
 
 interface ChaiExecSync extends ChaiPlugin {
   defaults: Defaults;
@@ -242,7 +239,7 @@ interface Defaults {
   /**
    * The options to use for all calls
    */
-  options?: Options,
+  options?: Options;
 }
 
 

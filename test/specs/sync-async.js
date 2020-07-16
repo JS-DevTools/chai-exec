@@ -16,13 +16,13 @@ describe("chaiExecSync", () => {
     // Expect syntax
     expect(cli).exit.code.to.equal(0);
     expect(cli).stdout.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
-    expect(cli).stderr.to.be.empty;
+    expect(cli).stderr.to.have.lengthOf(0);
     expect(cli).output.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
 
     // Should syntax
     cli.should.have.exit.code(0);
     cli.should.have.stdout.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
-    cli.should.have.stderr.that.is.empty;
+    cli.should.have.stderr.that.has.lengthOf(0);
     cli.should.have.output.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
 
     // Assert syntax
@@ -40,13 +40,13 @@ describe("chaiExecAsync", () => {
         // Expect syntax
         expect(cli).exit.code.to.equal(0);
         expect(cli).stdout.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
-        expect(cli).stderr.to.be.empty;
+        expect(cli).stderr.to.have.lengthOf(0);
         expect(cli).output.to.equal("Argument #1: --foo\nArgument #2: --bar\n");
 
         // Should syntax
         cli.should.have.exit.code(0);
         cli.should.have.stdout.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
-        cli.should.have.stderr.that.is.empty;
+        cli.should.have.stderr.that.has.lengthOf(0);
         cli.should.have.output.that.equals("Argument #1: --foo\nArgument #2: --bar\n");
 
         // Assert syntax
